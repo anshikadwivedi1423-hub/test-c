@@ -2,24 +2,31 @@
 
 int main()
 {
-    int num, original, remainder, sum = 0;
+    int n, i, flag = 0;
 
     printf("Enter a number: ");
-    scanf("%d", &num);
+    scanf("%d", &n);
 
-    original = num;
-
-    while (num != 0)
+    if (n <= 1)
     {
-        remainder = num % 10;
-        sum = sum + (remainder * remainder * remainder);
-        num = num / 10;
+        flag = 1;
+    }
+    else
+    {
+        for (i = 2; i <= n / 2; i++)
+        {
+            if (n % i == 0)
+            {
+                flag = 1;
+                break;
+            }
+        }
     }
 
-    if (sum == original)
-        printf("Armstrong Number");
+    if (flag == 0)
+        printf("Prime Number");
     else
-        printf("Not an Armstrong Number");
+        printf("Not a Prime Number");
 
     return 0;
 }
